@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { login } from '../../api/apiAuth';
+import { authonticate } from '../../utilities/auth';
 import { showError, showLoading } from '../../utilities/massages';
 import Layout from '../Layout';
 
@@ -32,14 +33,17 @@ const Login = () => {
         })
         login({email,password})
         .then(response=>{
-            setValues({
-                email: '',
-                password: "",
-                loading:false,
-                disabled:false,
-                redirect:true,
-                
+            authonticate(response.data.token,()=>{
+                setValues({
+                    email: '',
+                    password: "",
+                    loading:false,
+                    disabled:false,
+                    redirect:true,
+                    
+                })
             })
+           
         })
         .catch(err=>{
             let errMsg="Somthing is Wrong!!";
