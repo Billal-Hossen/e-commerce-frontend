@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getProfile, updateProfile } from '../../api/apiOrder';
 import { userInfo } from '../../utilities/auth';
 import Layout from '../Layout';
@@ -53,8 +53,13 @@ const ShippingAddress = () => {
             })
             .catch(err => setDisabled(false));
     }
+
+    const history=useHistory();
     return (
         <Layout title="Checkout" description="Complete your order!" className="container">
+           {
+               redirect? history.push("/checkout") : ""
+           }
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><Link href="#">Order</Link></li>

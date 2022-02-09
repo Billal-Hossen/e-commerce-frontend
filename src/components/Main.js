@@ -5,6 +5,7 @@ import CreateProdect from "./admin/CreateProdect";
 import Home from "./home/Home";
 import ProductDetails from "./home/ProductDetails";
 import Cart from "./order/Cart";
+import Checkout from "./order/Checkout";
 import ShippingAddress from "./order/ShippingAddress";
 import { AdminRouter } from "./ProtectedRouters/AdminRouter";
 import { PrivateRoute } from "./ProtectedRouters/PrivateRoute";
@@ -20,7 +21,7 @@ const Main = () => {
             <Route path="/register" component={Register}/>
             <Route path="/product/:id" component={ProductDetails}/>
             {/* <Route path="/cartItem" component={Cart}/> */}
-            <Route path="/checkout" component={ShippingAddress}/>
+            {/* <Route path="/checkout" component={ShippingAddress}/> */}
             <PrivateRoute path="/user/dashboard" >
                 <Dashboard/>
             </PrivateRoute>
@@ -29,6 +30,9 @@ const Main = () => {
             </PrivateRoute>
             <PrivateRoute path="/shippingAddress" >
                <ShippingAddress/>
+            </PrivateRoute>
+            <PrivateRoute path="/checkout" >
+               <Checkout/>
             </PrivateRoute>
             <AdminRouter path="/admin/dashboard">
                 <AdminDashboard/>
