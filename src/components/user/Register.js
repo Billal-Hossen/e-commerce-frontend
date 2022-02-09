@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { register } from '../../api/apiAuth';
+import { isAuthonticated } from '../../utilities/auth';
 import { showError, showLoading } from '../../utilities/massages';
 import Layout from '../Layout';
 
@@ -62,6 +63,9 @@ const Register = () => {
         <Layout title='Register' className="container col-md-8 ofset-md-2">
             <h1>Register Here</h1>
             <hr />
+            {
+               isAuthonticated() ? <Redirect to="/"  /> : ""
+           }
             {
                 success&& <div className='alert alert-success'>New account created! <Link to="/login">Login</Link></div>
             }

@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { isAuthonticated, signOut } from '../utilities/auth';
+import { isAuthonticated, signOut, userInfo } from '../utilities/auth';
 
 const Menu = () => {
+//   const [role,setRole]=useState("")
+//  useEffect(()=>{
+//   const {role}=userInfo();
+//   setRole(role)
+
+//  },[role])
     const history= useHistory();
     return (
       <nav className='navbar navbar-dark bg-dark'>
@@ -18,13 +24,19 @@ const Menu = () => {
          <Link className="nav-link"  to="/login">Login</Link>
      </li>
      <li className="nav-item">
+         <Link className="nav-link"  to="/product/:id">Login</Link>
+     </li>
+     <li className="nav-item">
          <Link className="nav-link"  to="/register">Register</Link>
      </li>
        </> : 
        <>
           <li className="nav-item">
-            <Link className="nav-link"  to="/dashboard">Dashboard</Link>
+            <Link className="nav-link"  to={`/${userInfo().role}/dashboard`}>Dashboard</Link>
           </li>
+          <li className="nav-item">
+         <Link className="nav-link"  to="/Cart">Cart</Link>
+     </li>
           <li className="nav-item cursor-pointer text-success">
               <span className="nav-link "  onClick={()=>{signOut(()=>{
                  {

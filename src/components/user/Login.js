@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { login } from '../../api/apiAuth';
-import { authonticate } from '../../utilities/auth';
+import { authonticate, isAuthonticated, userInfo } from '../../utilities/auth';
 import { showError, showLoading } from '../../utilities/massages';
 import Layout from '../Layout';
 
@@ -65,10 +65,13 @@ const Login = () => {
                loading && showLoading()
            }
            {
+               !isAuthonticated() ? <Redirect to="/login"/> : <Redirect to="/"/>
+           }
+           {
                error && showError(error,error)
            }
            {
-               redirect && <Redirect to="/"/>
+               redirect && <Redirect to={`${userInfo().role}/dashboard`}/>
            }
            <form onSubmit={handleSubmit}>
             <div className="form-group">
