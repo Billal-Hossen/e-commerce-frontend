@@ -6,6 +6,7 @@ import Home from "./home/Home";
 import ProductDetails from "./home/ProductDetails";
 import Cart from "./order/Cart";
 import Checkout from "./order/Checkout";
+import Payment from "./order/Payment";
 import ShippingAddress from "./order/ShippingAddress";
 import { AdminRouter } from "./ProtectedRouters/AdminRouter";
 import { PrivateRoute } from "./ProtectedRouters/PrivateRoute";
@@ -33,6 +34,9 @@ const Main = () => {
             </PrivateRoute>
             <PrivateRoute path="/checkout" >
                <Checkout/>
+            </PrivateRoute>
+            <PrivateRoute path="/payment" >
+               <Payment/>
             </PrivateRoute>
             <AdminRouter path="/admin/dashboard">
                 <AdminDashboard/>

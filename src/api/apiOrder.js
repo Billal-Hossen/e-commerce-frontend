@@ -59,3 +59,12 @@ export const updateProfile = (token, data) => {
         }
     })
 }
+
+
+export const initPayment=token=>{
+    return axios.get(`${apiUrl}/payment`,{
+        headers:{
+            "Authorization": `Bearer ${token}`
+        }
+    })
+}
